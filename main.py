@@ -25,7 +25,6 @@ class Processor():
         self.load_model()
         self.load_optimizer()
         self.load_scheduler()
-        #self.load_state()
         self.best_train_acc1 = 0
         self.best_test_acc1 = 0
 
@@ -68,7 +67,6 @@ class Processor():
         if self.arg.weights:
             ckpt = torch.load(self.arg.weights, map_location='cpu', weights_only=True)
             self.model.load_state_dict(ckpt['model'], strict=False)
-        # automatically resume from checkpoint if it exists
         elif os.path.exists(path):
             ckpt = torch.load(path, map_location='cpu', weights_only=True)
             self.model.load_state_dict(ckpt['model'], strict=False)

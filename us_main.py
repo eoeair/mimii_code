@@ -45,12 +45,6 @@ class Processor():
             num_workers=self.arg.num_worker,
             pin_memory=True)
 
-    # def load_model(self):
-    #     self.device = self.arg.device
-    #     Model = import_class(self.arg.model)
-    #     self.model = Model(**self.arg.model_args).to(self.device)
-    #     self.loss = nn.CrossEntropyLoss().to(self.device)
-    #修改点:对于自编码器，常用均方误差损失衡量重构效果，不再使用交叉熵损失
     def load_model(self):
         self.device = self.arg.device
         Model = import_class(self.arg.model)
